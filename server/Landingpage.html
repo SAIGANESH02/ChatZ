@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="Langingpage.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/1.18.11/tsparticles.min.js">
+    </script>
+    <style media="screen">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        canvas {
+            display: block;
+        }
+        
+        #network {
+            width: 100%;
+            height: 657px;
+            background: black;
+        }
+    </style>
+    <script type="text/javascript">
+        function b64EncodeUnicode(str) {
+            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+                return String.fromCharCode('0x' + p1);
+            }));
+        }
+        var partJson = {
+            "detectRetina": false,
+            "fpsLimit": 90,
+            "particles": {
+                "number": {
+                    "value": 100
+                },
+                "shape": {
+                    "type": "image",
+                    "options": {
+                        "image": [{
+                            "src": "data:image/jpeg;base64,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AOBTXV4ao1T6RzHsYYYssAOdFHIHkA3tdar48UnCHcUnUkVJExva118xfaKjg48UvCHcUnUrfjxS8IfxSdSQSXn86Wd51GZx6pd/fyZOpU+PVJv0nJk6kgk4Nd51UA7RUXfHmk35/Jk6kOPVJvr+TJ1JBKzGlfTJ86iQ480m+v5L1a/Hik8ksg84Yf5gqwS2820KIdV7FxrSK+MZJe5sc7dAe79WQefyH7Dto3HelH/kkOfSWG/sAWsx5xwgq6dkEOWSHte5zhktAAObPn8qRHg0RFAREQEREBERBvcA4pVddHJJTta4ReEC8Md9l1jyYuVbSQYs4zeEzrWyxPx0mwa2VkcccjJfCD8oEHbBBSoxyke4u1pgub+E5Uao4Bqt6PKZ1qhwHU72eUzrWx+Nb96byiqHGl+9t5RQa7uLUb2eUzrVvceo3s8betbE4zO3sco9StOMbt7HKPUgwO5M+9njb1qncmfezxt61nfGF29jlHqVPjA7exyj1IMHuXPuDxt61Q4Mm3B429azu7x3sco9SocOnexyj1IMLudNuDxjrVO5024PGOtZhw2dwOP8llR40vaxrGwQ5i4l725b33tmJPkFlBqe58u4PGOtPgEu4PGOtbf42y7zT82E+Nsu80/NBBqO58u4PGOtU+AS7g8Y61uJMaXPY5r4IbnJyXsbrbo7G5tbTfRnWF3YO4+9+SDE+AS7g8Y60+AS7n2jrWX3XO4+9+Sp3X/yfe/JBi/AJdweMdafAJdx7R1rL7rncfe/JU7r/wCT735IMb4BLufaOtO58u49retZXdc7gcr8k7sHcDjKDF7ny7j2t607nS7j2t61ld2DuBxlWuwrfTG0/SSg+LcGynNk+0davwhgmWBrXSADL0AG5X1iwwW2tG3NntcqmGcNPqckOa1rWeCG39pJQaxERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERB//2Q==",
+                            "width": 202,
+                            "height": 200
+                        }]
+                    }
+                },
+                "size": {
+                    "value": 10,
+                    "random": true
+                },
+                "links": {
+                    "enable": true,
+                    "distance": 100,
+                    "color": "#fff",
+                    "opacity": 1,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 9,
+                    "direction": "random",
+                    "straight": false,
+                    "bounce": true,
+                    "outMode": "bounce",
+                    "random": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onClick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                },
+                "modes": {
+                    "push": {
+                        "quantity": 4
+                    },
+                    "grab": {
+                        "distance": 100
+                    }
+                }
+            }
+        };
+        var jsonUri = "data:text/plain;base64," + b64EncodeUnicode(JSON.stringify(partJson));
+        particlesJS.load('network', jsonUri);
+    </script>
+</head>
+
+<body>
+    <section>
+        <nav>
+            <ul>
+                <li class="logo">Midas</li>
+                <li class="items"><a href="#">Home</a></li>
+                <li class="items"><a href="#about">About</a></li>
+                <li class="items"><a href="#">Contact</a></li>
+                <li class="items"><a href="#tech-grid">Technologies</a></li>
+                <li class="items"><a href="#tech-grid">Chat</a></li>
+
+                <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+            </ul>
+        </nav>
+        <script>
+            $(document).ready(function() {
+                $('.btn').click(function() {
+                    $('.items').toggleClass("show");
+                    $('ul li').toggleClass("hide");
+                });
+            });
+        </script>
+
+    </section>
+
+    <section class="main">
+
+        <div id="network">
+            <h1 class="app"> Chat App</h1>
+
+            <p class="head">A VERY reliable way to communicate on the internet.,<br> </p>
+            <p class="head-1">An end-to-end encrypted decentralised cross-platform chat application.</p>
+
+        </div>
+        <div class="pig">
+            <div class="scrol">
+                <a href="#about">
+                    <div class="scroll-down"></div>
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <section>
+        <div class="division">
+            <p id="hehe">Under Development </p>
+
+        </div>
+
+    </section>
+
+
+    <div class="info-cards">
+        <div class="container-1">
+            <div class="card-i">
+                <div class="face face1">
+                    <div class="content-1">
+                        <img src="icons/decentralized.png">
+                        <h3>Decentralized</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content-1">
+                        <p class="context">A decentralised architecture ensures distributed authority, power. Appropriate data is encrypted and stored in fragments among peer devices. P2P ensures trust with faster data transfer rates.</p>
+                        <a href="https://petkanics.medium.com/the-benefits-of-decentralization-88a0b5d0fd39">Benefits of Decentralization</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-i">
+                <div class="face face1">
+                    <div class="content-1">
+                        <img src="icons/person.png">
+                        <h3>Code</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content-1">
+                        <p class="context">Lorem ipsum dolor sit amet consectetur adipisicing elit. cum ut quasi!</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-i">
+                <div class="face face1">
+                    <div class="content-1">
+                        <img src="icons/person.png">
+                        <h3>Launch</h3>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content-1">
+                        <p class="context">Lorem ipsum dolor sit amet consectetur adipisicing elit. cum ut quasi!</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <script>
+        $('.card').hover(function() {
+            if ($(this).hasClass("active")) {
+                $('.card .bottom').slideUp(function() {
+                    $('.card').removeClass("active");
+
+                });
+
+            } else {
+                $('.card').addClass("active");
+                $('.card .bottom').stop().slideDown();
+            }
+
+        })
+    </script>
+
+    </section>
+
+    <section id="tech-grid">
+
+        <div class="tech-col-1">
+
+            <div class="tech-card">
+                <img class="card-img-top" src="icons/node.png" style='text-align:center;'>
+                <div class="card-body">
+                    <p class="tech-card-title">Node.js</p>
+                    <p class="tech-card-sub">
+                        <a href="https://nodejs.org/en/">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <img class="card-img-top-et" src="icons/Ethereum.png" style='text-align:center;'>
+                <div class="card-body">
+                    <p class="tech-card-title">Ethereum</p>
+                    <p class="tech-card-sub">
+                        <a href="https://medium.com/@micheledaliessi/what-is-ethereum-f4c5e566ff77">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <img class="card-img-top-e" src="icons/express.png" style='text-align:center;'>
+                <div class="card-body">
+                    <p class="tech-card-title">Express.js</p>
+                    <p class="tech-card-sub">
+                        <a href="https://expressjs.com/">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="tech-col-2">
+
+            <div class="tech-card">
+                <img class="card-img-top-g" src="icons/ganache.png" style='text-align:center;'>
+                <div class="card-body">
+                    <p class="tech-card-title">Ganache</p>
+                    <p class="tech-card-sub">
+                        <a href="https://www.trufflesuite.com/docs/ganache/overview">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class=" tech-card ">
+                <img class="card-img-top-m " src="icons/metamask.png " style='text-align:center;'>
+                <div class="card-body ">
+                    <p class="tech-card-title ">Metamask</p>
+                    <p class="tech-card-sub-m ">
+                        <a href="https://metamask.io/">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="tech-card ">
+                <img class="card-img-top " src="icons/solid.png " style='text-align:center;'>
+                <div class="card-body ">
+                    <p class="tech-card-title ">Solidity</p>
+                    <p class="tech-card-sub ">
+                        <a href="https://docs.soliditylang.org/en/v0.8.4/">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="tech-col-3 ">
+            <div class="tech-card ">
+                <img class="card-img-top-w " src="icons/web3.png " style='text-align:center;'>
+                <div class="card-body ">
+                    <p class="tech-card-title ">Web 3</p>
+                    <p class="tech-card-sub ">
+                        <a href="https://web3js.readthedocs.io/en/v1.3.4/ ">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="tech-card ">
+                <img class="card-img-top " src="icons/node.png " style='text-align:center;'>
+                <div class="card-body ">
+                    <p class="tech-card-title ">Node.js</p>
+                    <p class="tech-card-sub ">
+                        <a href="https://nodejs.org/en/ ">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="tech-card ">
+                <img class="card-img-top-t " src="icons/truffle.jpg " style='text-align:center;'>
+                <div class="card-body ">
+                    <p class="tech-card-title ">Truffle</p>
+                    <p class="tech-card-sub ">
+                        <a href="https://www.trufflesuite.com/truffle ">Read More</a>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="about">
+        <div class="owl-carousel owl-theme ">
+
+            <div class="item">
+                <div class="card front-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                </div>
+                <div class="card back-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                    <div class="info">
+                        <div class="title">
+                            Harshit</div>
+                        <p class="rollnumber">
+                            User interface designer <br>Back-end developer</p> <br>
+                        <p class="rollnumber">AM.EN.U4AIE19008</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="card front-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                </div>
+                <div class="card back-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                    <div class="info">
+                        <div class="title">
+                            Vamsi</div>
+                        <p class="rollnumber">
+                            User interface designer <br>Front-end developer</p> <br>
+                        <p class="rollnumber">AM.EN.U4AIE19068</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="card front-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                </div>
+                <div class="card back-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                    <div class="info">
+                        <div class="title">
+                            N Sai Ganesh</div>
+                        <p class="rollnumber">
+                            User interface designer <br>Back-end developer</p> <br>
+                        <p class="rollnumber">AM.EN.U4AIE19076</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="item">
+                <div class="card front-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                </div>
+                <div class="card back-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                    <div class="info">
+                        <div class="title">
+                            Nikhil</div>
+                        <p class="rollnumber">
+                            User interface designer <br>Front-end developer</p> <br>
+                        <p class="rollnumber">AM.EN.U4AIE19067</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="item">
+                <div class="card front-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                </div>
+                <div class="card back-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                    <div class="info">
+                        <div class="title">
+                            Abhishek</div>
+                        <p class="rollnumber">
+                            User interface designer <br>Front-end developer</p> <br>
+                        <p class="rollnumber">AM.EN.U4AIE19002</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="item">
+                <div class="card front-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                </div>
+                <div class="card back-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                    <div class="info">
+                        <div class="title">
+                            Vishal</div>
+                        <p class="rollnumber">
+                            User interface designer <br>Front-end developer</p> <br>
+                        <p class="rollnumber">AM.EN.U4AIE19004</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="item">
+                <div class="card front-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                </div>
+                <div class="card back-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                    <div class="info">
+                        <div class="title">
+                            Sai karthik</div>
+                        <p class="rollnumber">
+                            User interface designer <br>Front-end developer</p> <br>
+                        <p class="rollnumber">AM.EN.U4AIE19020</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="card front-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                </div>
+                <div class="card back-face">
+                    <img src="https://images.unsplash.com/photo-1492288991661-058aa541ff43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80">
+                    <div class="info">
+                        <div class="title">
+                            Harsha</div>
+                        <p class="rollnumber">
+                            User interface designer <br>Front-end developer</p> <br>
+                        <p class="rollnumber">AM.EN.U4AIE19066</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            autoplay: false,
+            autoplayTimeout: 1000,
+            stagePadding: 50,
+            nav: false,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

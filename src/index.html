@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CHAT-Z</title>
+  <link href="css/app.css" rel="stylesheet">
+  <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript">
+</script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+</head>
+
+<body>
+  <center><h1 style="color:white;font-family:Impact;font-size:40px">Chat-Z</h1><br>
+  <h2>D-App Messenger</h2></center>
+  <hr style="border: 1px solid #80ccff; margin-top: -5px;" />
+  <br>
+
+  <label>Contract address:</label> <br>
+  <a target="_blank" type="addressLinks" id="contractAddress" spellcheck="false">Could not load</a>
+  <br><br>
+
+  <label>Contract owner:</label> <br>
+  <a target="_blank" type="addressLinks" id="contractOwner" spellcheck="false">Could not load</a>
+  <br><br>
+
+  <label>Your Ethereum address:</label> <br>
+  <a target="_blank" type="addressLinks" id="myAddress" spellcheck="false">Could not load</a>
+  <br><br>
+
+  <label>Your balance:</label> <br>
+  <textarea type="mySimpleLabel" id="myBalance" spellcheck="false">0 Ether</textarea>
+  <br><br>
+
+  <br>
+  <label>User directory:</label> <br>
+  <input type="myDefaultButton" value="Copy" onclick="App.copyAddressToSend()" style="float:right"></input>
+  <div style="overflow: hidden; padding-right: 10px;">
+    <select type="registeredUsersAddressMenu" id='registeredUsersAddressMenu'></select>​
+  </div>
+  <br>
+
+  <label>Send to:</label> <br>
+  <textarea type="myInputTextArea" id="receiver" spellcheck="false" style="width: 95%;" maxlength="42" rows="1"></textarea>
+  <br><br>
+
+  <br><label>Message:</label> <br>
+  <input type="myDefaultButton" id="sendMessageButton" value="Send" onclick="App.sendMessage()" style="float:right"></input>
+  <div style="overflow: hidden; padding-right: 10px;">
+    <textarea type="messageTextArea" id="message" maxlength="30" rows="1"></textarea>​
+  </div>
+
+  <div id="receivedTable" style="display:none;">
+    <br><label>Received:</label> <br>
+    <input type="myDefaultButton" id="replyButton" value="Reply" onclick="App.replyToMessage()" style="float:right"></input>
+    <div style="overflow: hidden; padding-right: 10px;">
+      <textarea type="messageTextArea" id='reply'></textarea>​
+    </div>
+    <br>
+    <table id='mytable' style="margin-top: -5px;background-color:#b3ffff;">
+      <thead>
+        <tr>
+          <th style="background-color: #009999;">Date</th>
+          <th style="background-color: #009999;">From</th>
+          <th style="display:none;">Content</th>
+        </tr>
+      </thead>
+      <tbody id="mytable-tbody">
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+  <label>Status:</label> <br>
+  <span id="status" style="overflow: hidden; word-wrap: break-word;display: inline-block;white-space: pre-wrap; font-size:12px; margin:0px; Color:Red"> Welcome to ChatWei</span>
+  <br>
+  <br>
+  <button class="enableEthereumButton">Enable Ethereum</button>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
