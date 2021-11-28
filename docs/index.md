@@ -1,37 +1,19 @@
-## Welcome to GitHub Pages
+# ChatZ
+An Ethereum-powered Decentralized chat application.
 
-You can use the [editor on GitHub](https://github.com/SAIGANESH02/ChatZ/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+## Inspiration
+With the persisting scenario of increased privacy and security breaches in chatting and social media platforms, there's been a sense of insecurity stirring amongst people globally. People are losing their basic right to privacy due to these prevalent issues. Apart from this, there's a lot of data and information theft taking place on a daily basis in our Armed Forces sometimes due to lack of proper end-to-end encryption or unsafe means of message transmission, which results in sensitive data leaks to the wrong hands or a rival nation which might prove disastrous. Hence, how do we solve this ?.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## What it does
+Decentralized applications use peer-to-peer networks, this eliminates the possibility of network failure due to central node failure. Blockchain functions as an immutable ledger that allows for decentralized messaging. In today's world, where keeping data on a centralized server can be a risky and costly experience, a decentralized application (DApp) for communication and resource sharing is required. We can implement various methods of sharing resources and communicating with the help of various agreements. We can create a secure and reliable means of accessing data by combining Blockchain and Decentralized Applications, which overcomes the shortcomings of traditional messaging apps.
 
-### Markdown
+## How we built it
+This chat application is built using Solidity, Metamask, ganache and built on top of Ethereum network, so the core of this application is smart contract which helps in transferring the messages between the nodes. Ganache and Truffle to handle the Ethereum smart-contract transactions. The web interface for the chat application was built using NodeJS, JavaScript, HTML, CSS and Bootstrap.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Challenges we ran into
+There were quite a few roadblocks to this project, some major challenges which we tackled were :-
+Integration of  Metamask with web3JS.
+The Environment set up on whole. 
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/SAIGANESH02/ChatZ/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Accomplishments that we're proud of
+We were able to successfully implement a functioning Decentralized chat application whose usage and deployment areas are endless, it's something which solves and restores chat-privacy for us people, and could also promise  a solution for secure data transfer in Armed forces organizations.
